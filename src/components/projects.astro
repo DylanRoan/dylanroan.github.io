@@ -1,0 +1,151 @@
+---
+type Project = {
+  title: string;
+  description: string;
+  skills: {
+    icon: string;
+    name: string;
+  }[];
+  image: string;
+  link: string;
+};
+
+const projects = [
+  {
+    title: "Araby AI",
+    description:
+      "Responsible for the development and maintenance of the Araby AI platform. Tasked to create, maintain, and improve new and existing features and tools in the platform.",
+    skills: [
+      { name: "Next.js", icon: "nextjs" },
+      { name: "React", icon: "react" },
+      { name: "Tailwind", icon: "tailwindcss" },
+      { name: "Vite", icon: "vite" },
+      { name: "TypeScript", icon: "typescript" },
+    ],
+    image: "/assets/projects/araby_ai.png",
+    // image:
+    //   "https://raw.githubusercontent.com/DylanRoan/portfolio/refs/heads/main/public/assets/projects/araby_ai.png",
+    link: "https://araby.ai",
+  },
+  {
+    title: "Angels on High - Website",
+    description:
+      "Responsible for creating and maintaining the Angels on High platform as a whole. Created the main site, user dashboard for teachers, students, and parents, as well as the admin dashboard for managing the platform.",
+    skills: [
+      { name: "Next.js", icon: "nextjs" },
+      { name: "React", icon: "react" },
+      { name: "TypeScript", icon: "typescript" },
+      { name: "Drizzle", icon: "drizzle" },
+      { name: "PostgreSQL", icon: "postgresql" },
+      { name: "Backblaze", icon: "backblaze" },
+    ],
+    image: "/assets/projects/angelsonhigh.png",
+    // image:
+    //   "https://raw.githubusercontent.com/DylanRoan/portfolio/refs/heads/main/public/assets/projects/angelsonhigh.png",
+    link: "https://angels-on-high.vercel.app/",
+  },
+  {
+    title: "AvatarLabs - Website",
+    description:
+      "Responsible for creating and maintaining the AvatarLabs landing site, as well as the admin dashboard for managing the application.",
+    skills: [
+      { name: "React", icon: "react" },
+      { name: "Vite", icon: "vite" },
+      { name: "TypeScript", icon: "typescript" },
+      { name: "Tailwind", icon: "tailwindcss" },
+      { name: "Astro", icon: "astro" },
+    ],
+    image: "/assets/projects/avatarlabs.png",
+    // image:
+    //   "https://raw.githubusercontent.com/DylanRoan/portfolio/refs/heads/main/public/assets/projects/avatarlabs.png",
+    link: "https://avatarlabs.araby.ai",
+  },
+  {
+    title: "Abdul Latif Jameel AI",
+    description:
+      "Responsible for creating the website and admin dashboard for Araby AI's client, Abdul Latif Jameel. Tasked to create a competition site where users can create and submit AI images for a chance to win prizes.",
+    skills: [
+      { name: "React", icon: "react" },
+      { name: "Vite", icon: "vite" },
+      { name: "TypeScript", icon: "typescript" },
+      { name: "Tailwind", icon: "tailwindcss" },
+      { name: "Astro", icon: "astro" },
+    ],
+    image: "/assets/projects/aljf_ai.png",
+    // image:
+    //   "https://raw.githubusercontent.com/DylanRoan/portfolio/refs/heads/main/public/assets/projects/aljf_ai.png",
+    link: "https://aljf.rvamp.com",
+  },
+  {
+    title: "Boncafé - Backend API",
+    description:
+      "Responsible for creating the backend API for Boncafé's mobile application. Was also tasked to integrate the API with the mobile application.",
+    skills: [
+      { name: "Node.js", icon: "nodejs" },
+      { name: "Express", icon: "express" },
+      { name: "PostgreSQL", icon: "postgresql" },
+      { name: "Heroku", icon: "heroku" },
+      { name: "Kotlin", icon: "kotlin" },
+    ],
+    image: "/assets/projects/boncafe.PNG",
+    // image: "https://raw.githubusercontent.com/DylanRoan/portfolio/refs/heads/main/public/assets/projects/boncafe.png",
+    link: "https://www.boncafeme.ae/",
+  },
+] as Project[];
+
+const image_url_base =
+  "https://raw.githubusercontent.com/DylanRoan/portfolio/refs/heads/main/public";
+---
+
+<div class="w-full flex flex-col rounded-lg outline-2 px-2 gap-2">
+  <h2 class="md:text-3xl text-2xl font-bold md:text-start text-center">
+    Projects
+  </h2>
+
+  <!-- grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <!-- sample -->
+    <!-- {
+      Array.from({ length: 20 }).map((i) => (
+        <div class="flex flex-col gap-4">
+          <div class="h-40 bg-gray-200 rounded-lg" />
+          <div class="flex flex-col gap-2">
+            <div class="h-4 bg-gray-200 rounded-lg" />
+            <div class="h-4 bg-gray-200 rounded-lg" />
+            <div class="h-4 bg-gray-200 rounded-lg" />
+          </div>
+        </div>
+      ))
+    } -->
+
+    {
+      projects.map(({ title, description, skills, image, link }) => (
+        <a
+          href={link}
+          target={link ? "_blank" : "_self"}
+          rel="noopener noreferrer"
+          class="flex flex-col gap-4 mb-4">
+          <img
+            src={`${image_url_base}${image}`}
+            alt={title}
+            class="object-contain w-full h-40 rounded-lg"
+          />
+
+          <div class="flex flex-col gap-2">
+            <h3 class="text-lg font-semibold">{title}</h3>
+            <p class="text-base">{description}</p>
+
+            <div class="flex flex-wrap gap-2">
+              {skills.map(({ name, icon }) => (
+                <div class="flex items-center gap-1">
+                  <i class={`devicon-${icon}-plain text-2xl`} />
+                  <p class="text-sm">{name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</div>
