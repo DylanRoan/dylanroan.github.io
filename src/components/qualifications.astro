@@ -2,7 +2,8 @@
 const education = [
   {
     name: "Bath Spa University",
-    logo: "/assets/icons/bsu_uk.png",
+    // logo: "/assets/icons/bsu_uk.png",
+    logo: "https://raw.githubusercontent.com/DylanRoan/portfolio/refs/heads/main/public/assets/icons/bsu_uk.png",
     degree: "Bachelor of Science - BS, Creative Computing",
     startDate: "2021",
     endDate: "2024",
@@ -13,6 +14,7 @@ const education = [
 const certifications = [
   {
     name: "Microsoft Certified: Azure Fundamentals",
+    logo: "https://raw.githubusercontent.com/DylanRoan/portfolio/refs/heads/main/public/assets/icons/azure_fundamentals.svg",
     issuer: "Microsoft",
     date: "2023-08-17",
     link: "https://learn.microsoft.com/api/credentials/share/en-us/DylanRoanDuario-2822/4BF811414FC919A3?sharingId=6C78B0896EB299BB",
@@ -45,17 +47,13 @@ const certifications = [
 
   <div class="flex flex-col gap-8">
     {
-      certifications.map(({ name, issuer, date, link }) => (
+      certifications.map(({ name, issuer, date, link, logo }) => (
         <a
           class="flex gap-4 md:flex-row flex-col cursor-pointer"
           href={link}
           target="_blank"
           rel="noopener noreferrer">
-          <img
-            src="/assets/icons/azure_fundamentals.svg"
-            alt={name}
-            class="mx-auto object-contain w-20 h-20"
-          />
+          <img src={logo} alt={name} class="mx-auto object-contain w-20 h-20" />
 
           <div class="flex-1 flex flex-col">
             <h2 class="text-xl font-semibold">{name}</h2>
