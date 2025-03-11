@@ -1,0 +1,66 @@
+---
+import Container from "@/components/container.astro";
+import Layout from "../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+import Contacts from "@/components/contacts.astro";
+import Experience from "@/components/experience.astro";
+import Qualifications from "@/components/qualifications.astro";
+import Skills from "@/components/skills.astro";
+---
+
+<Layout title="">
+  <Container>
+    <section
+      class="md:h-screen w-full md:overflow-hidden flex md:flex-row flex-col py-16 gap-4">
+      <aside
+        class="flex-shrink-0 md:w-96 w-full flex flex-col md:overflow-y-auto scrollbar-soft">
+        <div class="w-full flex flex-col rounded-lg outline-2 md:px-6">
+          <h1 class="md:text-3xl text-2xl font-bold md:text-start text-center">
+            Dylan Roan A. Duario
+          </h1>
+          <h2
+            class="md:text-lg text-base font-semibold md:text-start text-center">
+            Software Engineer
+          </h2>
+          <div
+            class="flex gap-2 items-center mt-1 md:justify-start justify-center">
+            <Icon name="material-symbols:globe" class="w-4 h-4" />
+            <p class="text-sm h-4">Abu Dhabi, United Arab Emirates</p>
+          </div>
+        </div>
+
+        <div
+          class="w-full flex flex-col rounded-lg outline-2 md:px-6 mt-8 md:text-start text-center">
+          <h3 class="text-lg font-semibold">About Me</h3>
+
+          <p class="text-base mt-2">
+            I am a software engineer currently based in Abu Dhabi, United Arab
+            Emirates. I have a passion for web development and I am always eager
+            to learn new technologies.
+          </p>
+        </div>
+
+        <Contacts />
+      </aside>
+
+      <aside
+        class="flex flex-1 gap-2 flex-col md:overflow-y-auto h-full scrollbar-hide relative">
+        <Experience />
+        <Qualifications />
+        <Skills />
+      </aside>
+    </section>
+
+    <style>
+      .scrollbar-soft {
+        scrollbar-width: thin;
+        scrollbar-color: #888 transparent;
+      }
+
+      .scrollbar-hide {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+    </style>
+  </Container>
+</Layout>

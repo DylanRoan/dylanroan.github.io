@@ -1,0 +1,51 @@
+---
+import { Icon } from "astro-icon/components";
+
+const contact_info = [
+  {
+    href: "mailto:dylanroanduario@gmail.com",
+    icon: "material-symbols:mail",
+    text: "dylanroanduario@gmai.com",
+  },
+  {
+    href: "tel:+971 54 337 5942",
+    icon: "material-symbols:phone-in-talk-rounded",
+    text: "+971 54 337 5942",
+  },
+  {
+    href: "https://github.com/DylanRoan",
+    icon: "mdi:github",
+    text: "DylanRoan",
+  },
+  {
+    href: "https://www.linkedin.com/in/dylan-roan-duario-187033298/",
+    icon: "mdi:linkedin",
+    text: "Dylan Roan Duario",
+  },
+  {
+    href: "https://www.instagram.com/dylan.roan.d/",
+    icon: "mdi:instagram",
+    text: "dylan.roan.d",
+  },
+] as const;
+---
+
+<div class="w-full flex flex-col rounded-lg outline-2 md:px-6">
+  <h3 class="text-lg font-semibold mt-8 md:text-start text-center">Contact</h3>
+  <div class="flex flex-col gap-2 mt-2">
+    {
+      contact_info.map(({ href, icon, text }) => (
+        <div class="flex gap-2 items-center">
+          <Icon name={icon} class="w-5 h-5" />
+          <p class="text-base h-6">
+            <a
+              href={href}
+              target={href.startsWith("http") ? "_blank" : undefined}>
+              {text}
+            </a>
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</div>

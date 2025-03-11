@@ -1,0 +1,39 @@
+---
+const skills = [
+  { name: "HTML5", icon: "html5" },
+  { name: "CSS3", icon: "css3" },
+  { name: "JavaScript", icon: "javascript" },
+  { name: "Tailwind", icon: "tailwindcss" },
+
+  { name: "React", icon: "react" },
+  { name: "Node.js", icon: "nodejs" },
+  { name: "Next.js", icon: "nextjs" },
+  { name: "Astro", icon: "astro" },
+
+  { name: "PostgreSQL", icon: "postgresql" },
+
+  { name: "Git", icon: "git" },
+  { name: "GitHub", icon: "github" },
+  { name: "VS Code", icon: "visualstudio" },
+];
+---
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+/>
+
+<div class="w-full flex flex-col rounded-lg outline-2 md:px-6">
+  <h3 class="text-lg font-semibold mt-8 md:text-start text-center">Skills</h3>
+  <div class="flex flex-wrap gap-4 mt-2">
+    {
+      skills.map(({ name, icon }) => (
+        <div class="flex flex-col items-center gap-1">
+          <i class={`devicon-${icon}-plain text-4xl`} class="w-12 h-12" />
+          <p class="text-sm">{name}</p>
+        </div>
+      ))
+    }
+  </div>
+</div>
