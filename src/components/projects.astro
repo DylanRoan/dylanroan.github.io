@@ -1,10 +1,13 @@
 ---
+import { Icon } from "astro-icon/components";
+
 type Project = {
   title: string;
   description: string;
   skills: {
     icon: string;
     name: string;
+    iconify?: string;
   }[];
   image: string;
   link: string;
@@ -22,9 +25,7 @@ const projects = [
       { name: "Vite", icon: "vite" },
       { name: "TypeScript", icon: "typescript" },
     ],
-    image: "/assets/projects/araby_ai.png",
-    // image:
-    //   "https://raw.githubusercontent.com/DylanRoan/portfolio/refs/heads/main/public/assets/projects/araby_ai.png",
+    image: "/portfolio/assets/projects/araby_ai.png",
     link: "https://araby.ai",
   },
   {
@@ -35,13 +36,17 @@ const projects = [
       { name: "Next.js", icon: "nextjs" },
       { name: "React", icon: "react" },
       { name: "TypeScript", icon: "typescript" },
-      { name: "Drizzle", icon: "drizzle" },
+      { name: "Drizzle", icon: "drizzle", iconify: "simple-icons:drizzle" },
       { name: "PostgreSQL", icon: "postgresql" },
-      { name: "Backblaze", icon: "backblaze" },
+      {
+        name: "Backblaze",
+        icon: "backblaze",
+        iconify: "simple-icons:backblaze",
+      },
+      { name: "Heroku", icon: "heroku", iconify: "simple-icons:heroku" },
+      { name: "Docker", icon: "docker" },
     ],
-    image: "/assets/projects/angelsonhigh.png",
-    // image:
-    //   "https://raw.githubusercontent.com/DylanRoan/portfolio/refs/heads/main/public/assets/projects/angelsonhigh.png",
+    image: "/portfolio/assets/projects/angelsonhigh.png",
     link: "https://angels-on-high.vercel.app/",
   },
   {
@@ -55,9 +60,7 @@ const projects = [
       { name: "Tailwind", icon: "tailwindcss" },
       { name: "Astro", icon: "astro" },
     ],
-    image: "/assets/projects/avatarlabs.png",
-    // image:
-    //   "https://raw.githubusercontent.com/DylanRoan/portfolio/refs/heads/main/public/assets/projects/avatarlabs.png",
+    image: "/portfolio/assets/projects/avatarlabs.png",
     link: "https://avatarlabs.araby.ai",
   },
   {
@@ -71,9 +74,7 @@ const projects = [
       { name: "Tailwind", icon: "tailwindcss" },
       { name: "Astro", icon: "astro" },
     ],
-    image: "/assets/projects/aljf_ai.png",
-    // image:
-    //   "https://raw.githubusercontent.com/DylanRoan/portfolio/refs/heads/main/public/assets/projects/aljf_ai.png",
+    image: "/portfolio/assets/projects/aljf_ai.png",
     link: "https://aljf.rvamp.com",
   },
   {
@@ -82,23 +83,21 @@ const projects = [
       "Responsible for creating the backend API for Boncafé's mobile application. Was also tasked to integrate the API with the mobile application.",
     skills: [
       { name: "Node.js", icon: "nodejs" },
-      { name: "Express", icon: "express" },
+      { name: "Express", icon: "express", iconify: "simple-icons:express" },
       { name: "PostgreSQL", icon: "postgresql" },
       { name: "Heroku", icon: "heroku" },
       { name: "Kotlin", icon: "kotlin" },
     ],
-    image: "/assets/projects/boncafe.PNG",
-    // image: "https://raw.githubusercontent.com/DylanRoan/portfolio/refs/heads/main/public/assets/projects/boncafe.png",
+    image: "/portfolio/assets/projects/boncafe.PNG",
     link: "https://www.boncafeme.ae/",
   },
 ] as Project[];
-
-const image_url_base =
-  "https://raw.githubusercontent.com/DylanRoan/portfolio/refs/heads/main/public";
 ---
 
 <div class="w-full flex flex-col rounded-lg outline-2 px-2 gap-2">
-  <h2 class="md:text-3xl text-2xl font-bold md:text-start text-center">
+  <h2
+    class="md:text-3xl text-2xl font-bold md:text-start text-center"
+    id="projects">
     Projects
   </h2>
 
@@ -126,7 +125,7 @@ const image_url_base =
           rel="noopener noreferrer"
           class="flex flex-col gap-4 mb-4">
           <img
-            src={`${image_url_base}${image}`}
+            src={image}
             alt={title}
             class="object-contain w-full h-40 rounded-lg"
           />
@@ -136,9 +135,13 @@ const image_url_base =
             <p class="text-base">{description}</p>
 
             <div class="flex flex-wrap gap-2">
-              {skills.map(({ name, icon }) => (
+              {skills.map(({ name, icon, iconify }) => (
                 <div class="flex items-center gap-1">
-                  <i class={`devicon-${icon}-plain text-2xl`} />
+                  {!iconify ? (
+                    <i class={`devicon-${icon}-plain text-2xl`} />
+                  ) : (
+                    <Icon name={iconify} class="text-2xl" />
+                  )}
                   <p class="text-sm">{name}</p>
                 </div>
               ))}

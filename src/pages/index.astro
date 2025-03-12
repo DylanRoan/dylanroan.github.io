@@ -3,6 +3,8 @@ import Container from "@/components/container.astro";
 import Layout from "../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 import Contacts from "@/components/contacts.astro";
+
+import { NavTabs } from "@/components/navtabs";
 import Experience from "@/components/experience.astro";
 import Qualifications from "@/components/qualifications.astro";
 import Skills from "@/components/skills.astro";
@@ -44,12 +46,15 @@ import Projects from "@/components/projects.astro";
         <Contacts />
       </aside>
 
-      <aside
-        class="flex flex-1 gap-2 flex-col md:overflow-y-auto h-full scrollbar-hide relative">
-        <Experience />
-        <Qualifications />
-        <Projects />
-        <Skills />
+      <aside class="flex flex-1 gap-2 flex-col h-full">
+        <NavTabs client:load />
+        <section
+          class="flex flex-1 gap-2 flex-col md:overflow-y-auto h-full scrollbar-hide relative">
+          <Experience />
+          <Qualifications />
+          <Projects />
+          <Skills />
+        </section>
       </aside>
     </section>
 
