@@ -46,10 +46,11 @@ import Projects from "@/components/projects.astro";
         <Contacts />
       </aside>
 
-      <aside class="flex flex-1 gap-2 flex-col h-full">
+      <aside class="flex flex-1 gap-2 flex-col h-full relative">
         <NavTabs client:load />
         <section
-          class="flex flex-1 gap-2 flex-col md:overflow-y-auto h-full scrollbar-hide relative">
+          class="flex flex-1 gap-2 flex-col md:overflow-y-auto h-full scrollbar-hide relative"
+          id="top">
           <Experience />
           <Qualifications />
           <Projects />
