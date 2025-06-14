@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const skills = [
   { name: "HTML5", icon: "html5" },
   { name: "CSS3", icon: "css3" },
@@ -12,9 +14,23 @@ const skills = [
 
   { name: "PostgreSQL", icon: "postgresql" },
 
+  { name: "Python", icon: "python" },
+  { name: "Kotlin", icon: "kotlin" },
+  { name: "Java", icon: "java" },
+
   { name: "Git", icon: "git" },
   { name: "GitHub", icon: "github" },
   { name: "VS Code", icon: "visualstudio" },
+
+  { name: "Heroku", icon: "heroku" },
+  { name: "Vercel", icon: "vercel" },
+  { name: "AWS", icon: "amazonwebservices" },
+  { name: "Stripe", icon: "stripe", iconify: "simple-icons:stripe" },
+  { name: "Docker", icon: "docker" },
+
+  { name: "Figma", icon: "figma" },
+  { name: "Canva", icon: "canva" },
+  { name: "Postman", icon: "postman" },
 ];
 ---
 
@@ -31,9 +47,13 @@ const skills = [
   </h2>
   <div class="flex flex-wrap gap-4 mt-2 md:justify-start justify-center">
     {
-      skills.map(({ name, icon }) => (
+      skills.map(({ name, icon, iconify }) => (
         <div class="flex flex-col items-center gap-1">
-          <i class={`devicon-${icon}-plain text-4xl`} class="w-12 h-12" />
+          {iconify ? (
+            <Icon name={iconify} class="w-9 h-9 text-4xl" />
+          ) : (
+            <i class={`devicon-${icon}-plain text-4xl`} class="w-12 h-12" />
+          )}
           <p class="text-sm">{name}</p>
         </div>
       ))
