@@ -49,6 +49,45 @@ const experience = [
     ongoing: false,
   },
 ];
+
+const nonProfessionalExperience = [
+  {
+    title: "Game Developer",
+    sub: "Unitersity Project",
+    company: "CommuHelp",
+    description:
+      "Acted as the game developer for the game “CommuHelp” as part of a group project using the Unity game engine. Responsible for creating a fast paced and engaging gameplay experience.",
+    logo: "/portfolio/assets/logos/dylan_duario_logo.jpg",
+    link: "",
+    startDate: "2024-02-01",
+    endDate: "2024-05-01",
+    ongoing: false,
+  },
+  {
+    title: "Competitor",
+    sub: "Abu Dhabi",
+    company: "First Lego League",
+    description:
+      "Participated in an international robotics competition called First Lego League. Competed two years in a row, winning first place in Robot Game in both years during the regionals.",
+    logo: "/portfolio/assets/logos/dylan_duario_logo.jpg",
+    link: "",
+    startDate: "2019-02-01",
+    endDate: "2020-02-01",
+    ongoing: false,
+  },
+  {
+    title: "Competitor",
+    sub: "Abu Dhabi",
+    company: "Cyber Patriot",
+    description:
+      "Participated in an international cybersecurity competition called Cyber Patriot. Responsible for learning and handling Ubuntu systems.",
+    logo: "/portfolio/assets/logos/dylan_duario_logo.jpg",
+    link: "",
+    startDate: "2018-01-01",
+    endDate: "2019-01-01",
+    ongoing: false,
+  },
+];
 ---
 
 <!-- Initially shown -->
@@ -60,6 +99,75 @@ const experience = [
   <div class="flex flex-col mt-4">
     {
       experience.map(
+        (
+          {
+            title,
+            sub,
+            company,
+            description,
+            logo,
+            link,
+            startDate,
+            endDate,
+            ongoing,
+          },
+          index
+        ) => (
+          <div class="flex gap-4 items-stretch">
+            <div class="relative h-full md:block hidden">
+              <div class="w-2 h-2 bg-slate-300 rounded-full absolute top-2 left-1/2 -translate-x-1/2" />
+              <div
+                class:list={[
+                  "w-[2px] bg-slate-300 h-full",
+                  index === 0 && "mt-2",
+                  index === experience.length - 1 && "mb-10",
+                ]}
+              />
+            </div>
+
+            <div class="flex flex-col gap-2 mb-4">
+              <div class="flex gap-2 md:flex-row flex-col">
+                {/* <img src={logo} alt={company} class="w-12 h-12 object-cover" /> */}
+                <div class="flex flex-col">
+                  <h4 class="text-lg font-semibold flex md:flex-row flex-col md:gap-1 flex-wrap">
+                    <span>{title}</span>
+                    <span class="md:block hidden">@</span>
+                    <span>{company}</span>
+                  </h4>
+                  <p class="text-sm text-slate-500 flex gap-1 flex-wrap">
+                    <span>{sub}</span>
+                    <span>{" | "}</span>
+                    <span>
+                      {new Date(startDate).toLocaleDateString("en-US", {
+                        month: "short",
+                        year: "numeric",
+                      })}
+                      {" - "}
+                      {ongoing
+                        ? "Present"
+                        : new Date(endDate).toLocaleDateString("en-US", {
+                            month: "short",
+                            year: "numeric",
+                          })}
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <p class="text-base">{description}</p>
+            </div>
+          </div>
+        )
+      )
+    }
+  </div>
+
+  <h2 class="md:text-3xl text-2xl font-bold md:text-start text-center mt-2">
+    Non-Professional Experience
+  </h2>
+
+  <div class="flex flex-col mt-4">
+    {
+      nonProfessionalExperience.map(
         (
           {
             title,
