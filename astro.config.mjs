@@ -11,7 +11,7 @@ import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   site: "https://DylanRoan.github.io",
-  base: '/portfolio',
+  base: '/',
   integrations: [
     react(),
     tailwind({
