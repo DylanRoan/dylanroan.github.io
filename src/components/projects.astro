@@ -1,23 +1,85 @@
 ---
-import { Icon } from "astro-icon/components";
+import type { ProjectItemType } from "@/components/projects/types";
+import ProjectsComponent from "@/components/projects/projects";
 
-type Project = {
-  title: string;
-  description: string;
-  skills: {
-    icon: string;
-    name: string;
-    iconify?: string;
-  }[];
-  image: string;
-  link: string;
-};
+const projectsList = [
+  {
+    title: "AWQAF Chatbot",
+    description:
+      "An AI chatbot admin dashboard built for AWQAF Abu Dhabi, designed to manage the chatbot's knowledge base, including FAQs, service cards, and general knowledge entries. Also built the chatbot interface, designed to be injected into AWQAF's website as a floating chat widget similar to Intercom.",
+    info: [
+      {
+        title: "Embeddable Widget",
+        description:
+          "Built the chatbot front-end in Next.js and TypeScript with a floating widget that can be injected into AWQAF’s website via a single script tag, similar to tools like Intercom.",
+      },
+      {
+        description:
+          "Implemented a configurable widget API (`window.awqafChatWidgetConfig`) and handled communication between parent site and iframe in order to control aspects of the chat.",
+      },
+      {
+        title: "Admin Dashboard",
+        description:
+          "Developed a Next.js + TypeScript admin interface to view user lists and conversations, and to monitor usage through statistics such as total chats, FAQs answered, services delivered, language distribution, and day-by-day activity across platforms (Web, Android, iOS).",
+      },
+      {
+        description:
+          "Built tooling for managing the chatbot’s knowledge base, including FAQs, service cards, and general knowledge entries.",
+      },
+      {
+        title: "Technologies Used",
+        description: "Next.js, React, TypeScript, Tailwind CSS",
+      },
+    ],
 
-const projects = [
+    skills: [
+      { name: "Next.js", icon: "nextjs" },
+      { name: "React", icon: "react" },
+      { name: "TypeScript", icon: "typescript" },
+      { name: "Tailwind", icon: "tailwindcss" },
+    ],
+
+    image: "/assets/projects/awqaf_chatbot.png",
+    logo: "/assets/logos/awqaf_logo.png",
+  },
   {
     title: "Araby AI",
     description:
-      "Responsible for the development and maintenance of the Araby AI platform. Tasked to create, maintain, and improve new and existing features and tools in the platform.",
+      "Araby AI is one of the largest AI platforms in the Middle East. It gathers various AI tools in one place, allowing users to create AI-generated content such as images, text, and videos. It aims to provide AI solutions tailored to the Arabic language.",
+
+    info: [
+      {
+        title: "Front-end Development",
+        description:
+          "Primarily responsible for the front-end development of the platform, serving 40,000+ monthly active users.",
+      },
+      {
+        description:
+          "Improved the front-end codebase by refactoring architecture and creating reusable components, significantly reducing time spent tracing issues and building new features (~30% faster).",
+      },
+      {
+        description:
+          "Reduced production bugs by ~60%, dropping incidents from multiple times per week to less than once a week.",
+      },
+      {
+        description:
+          "Contributed to back-end development tasks, including API development and database management to support front-end functionality.",
+      },
+      {
+        title: "Back-end Support",
+        description:
+          "Contributed to back-end development tasks, contributing to API development and database management to support front-end functionalities.",
+      },
+      {
+        title: "Technologies Used",
+        description: "Next.js, React, TypeScript, Tailwind CSS, MUI",
+      },
+      {
+        description:
+          "Node.js, Express, MongoDB, Socket.io, Redis, AWS, Python, Flask",
+      },
+    ],
+
     skills: [
       { name: "Next.js", icon: "nextjs" },
       { name: "React", icon: "react" },
@@ -38,12 +100,193 @@ const projects = [
       { name: "MUI", icon: "mui", iconify: "simple-icons:mui" },
     ],
     image: "/assets/projects/araby_ai.png",
+    logo: "/assets/logos/araby_ai_logo.png",
     link: "https://araby.ai",
   },
   {
-    title: "Angels on High - Website",
+    title: "Shahbandr AI",
     description:
-      "Responsible for creating and maintaining the Angels on High platform as a whole. Created the main site, user dashboard for teachers, students, and parents, as well as the admin dashboard for managing the platform.",
+      "A platform that provides AI-powered content generation for e-commerce stores, including public pages and dashboards for managing users and generated content.",
+
+    info: [
+      {
+        title: "Frontend Development",
+        description:
+          "Built the public-facing website and dashboards for generating AI product descriptions and images.",
+      },
+      {
+        description:
+          "Implemented user flows tailored to e-commerce workflows, helping store owners create product copy and visual assets quickly.",
+      },
+      {
+        title: "Admin Dashboard",
+        description:
+          "Developed tools for managing users, content, and account usage.",
+      },
+      {
+        title: "Technologies Used",
+        description: "React, TypeScript, MUI, AWS",
+      },
+    ],
+
+    skills: [
+      { name: "React", icon: "react" },
+      { name: "TypeScript", icon: "typescript" },
+      { name: "MUI", icon: "mui", iconify: "simple-icons:mui" },
+      { name: "AWS", icon: "amazonwebservices" },
+    ],
+    image: "/assets/projects/shahbandr_ai.png",
+    logo: "/assets/logos/shahbandr_ai_logo.png",
+    link: "https://ai.shahbandr.com/",
+  },
+  {
+    title: "Done",
+    description:
+      "Done is an AI-powered concierge platform where users chat with an assistant to handle errands, bookings, and purchases. The web app lets users describe what they need, while human agents work behind the scenes to build and finalize carts, send payment links directly inside the chat, and track orders in real time.",
+
+    info: [
+      {
+        title: "User App & Real-time Experience",
+        description:
+          "Built the user-facing web app in Next.js, TypeScript, and Tailwind CSS, with Socket.io powering real-time chat, order updates, and status changes as agents work on the user’s requests.",
+      },
+      {
+        description:
+          "Implemented chat flows where users talk only to the AI while the system quietly collects delivery details, suggested items, and links. Agents can then adjust carts, add items from AI suggestions, and push updated carts back to the user through the same chat interface.",
+      },
+      {
+        title: "Admin & Agent Dashboard",
+        description:
+          "Developed the internal React + Vite + MUI dashboard used by agents to monitor conversations, manage carts, choose products from AI-suggested items, and trigger actions such as finalizing orders and sending payment prompts.",
+      },
+      {
+        title: "Back-end Support & Payments",
+        description:
+          "Worked on the Flask backend to implement Stripe payment handling, including creating and confirming payment intents and wiring them to orders, as well as standardizing MongoDB models for chats, carts, and order workflows.",
+      },
+      {
+        title: "Technologies Used",
+        description:
+          "Next.js, React, TypeScript, Tailwind CSS, Socket.io, Flask, MongoDB, Stripe, Vite, MUI",
+      },
+    ],
+
+    skills: [
+      { name: "Next.js", icon: "nextjs" },
+      { name: "React", icon: "react" },
+      { name: "TypeScript", icon: "typescript" },
+      { name: "Tailwind", icon: "tailwindcss" },
+      { name: "Socket.io", icon: "socketdotio" },
+      { name: "MongoDB", icon: "mongodb" },
+      { name: "Stripe", icon: "stripe", iconify: "simple-icons:stripe" },
+      { name: "MUI", icon: "mui", iconify: "simple-icons:mui" },
+      { name: "Vite", icon: "vite" },
+    ],
+
+    image: "/assets/projects/done_ai.png",
+    logo: "/assets/logos/done_ai_logo.png",
+  },
+
+  {
+    title: "AvatarLabs",
+    description:
+      "A mobile-focused platform under Araby AI that let users generate personalized avatars using AI models, supported by a public site and an admin dashboard for content and user management.",
+
+    info: [
+      {
+        title: "Front-end Development",
+        description:
+          "Built the public-facing website and marketing pages for the platform using React and Astro.",
+      },
+      {
+        description:
+          "Implemented user flows that guided visitors through the avatar generation process and into the mobile app experience.",
+      },
+      {
+        title: "Admin Dashboard",
+        description:
+          "Developed an internal dashboard for managing users, avatar assets, and platform content.",
+      },
+      {
+        title: "Technologies Used",
+        description: "React, Vite, TypeScript, Tailwind CSS, Astro",
+      },
+    ],
+
+    skills: [
+      { name: "React", icon: "react" },
+      { name: "Vite", icon: "vite" },
+      { name: "TypeScript", icon: "typescript" },
+      { name: "Tailwind", icon: "tailwindcss" },
+      { name: "Astro", icon: "astro" },
+    ],
+    image: "/assets/projects/avatarlabs.png",
+    logo: "/assets/logos/avatarlabs_araby_logo.png",
+    link: "https://avatarlabs.araby.ai",
+  },
+  {
+    title: "Abdul Latif Jameel AI",
+    description:
+      "A competition platform for submitting AI-generated images, featuring a public site and admin dashboard for managing users, submissions, and competition details.”",
+
+    info: [
+      {
+        title: "Front-end Development",
+        description:
+          "Built the public-facing site that allowed users to generate and submit AI images for competition entry.",
+      },
+      {
+        title: "Admin Dashboard",
+        description:
+          "Developed tools for reviewing submissions and managing competition users and entries.",
+      },
+      {
+        title: "Technologies Used",
+        description: "React, Vite, TypeScript, Tailwind CSS, Next.js, AWS",
+      },
+    ],
+
+    skills: [
+      { name: "React", icon: "react" },
+      { name: "Vite", icon: "vite" },
+      { name: "TypeScript", icon: "typescript" },
+      { name: "Tailwind", icon: "tailwindcss" },
+      { name: "Next.js", icon: "nextjs" },
+      { name: "AWS", icon: "amazonwebservices" },
+    ],
+    image: "/assets/projects/aljf_ai.png",
+    logo: "/assets/logos/aljf_ai_logo.png",
+  },
+  {
+    title: "Learning Center",
+    description:
+      "Built a multi-role learning platform with a public site and dashboards for students, teachers, parents, and admins, supporting course access, class management, progress tracking, and content administration.",
+
+    info: [
+      {
+        title: "Full Stack Development",
+        description:
+          "Built the platform end-to-end, including public site, role-based dashboards, and admin tools.",
+      },
+      {
+        description:
+          "Designed the database schema and backend API structure to support student, teacher, parent, and admin workflows.",
+      },
+      {
+        description:
+          "Used Next.js to deliver server-rendered public pages for better SEO and faster first loads, while keeping API and UI logic in a single codebase.",
+      },
+      {
+        description:
+          "Delivered a functional MVP ready for deployment, although the project did not proceed to launch.",
+      },
+      {
+        title: "Technologies Used",
+        description:
+          "Next.js, React, TypeScript, Tailwind CSS, Drizzle ORM, PostgreSQL, Backblaze B2, Heroku",
+      },
+    ],
+
     skills: [
       { name: "Next.js", icon: "nextjs" },
       { name: "React", icon: "react" },
@@ -62,50 +305,36 @@ const projects = [
     image: "/assets/projects/angelsonhigh.png",
   },
   {
-    title: "AvatarLabs - Website",
-    description:
-      "Responsible for creating and maintaining the AvatarLabs landing site, as well as the admin dashboard for managing the application.",
-    skills: [
-      { name: "React", icon: "react" },
-      { name: "Vite", icon: "vite" },
-      { name: "TypeScript", icon: "typescript" },
-      { name: "Tailwind", icon: "tailwindcss" },
-      { name: "Astro", icon: "astro" },
-    ],
-    image: "/assets/projects/avatarlabs.png",
-    link: "https://avatarlabs.araby.ai",
-  },
-  {
-    title: "Abdul Latif Jameel AI",
-    description:
-      "Responsible for creating the website and admin dashboard for Araby AI's client, Abdul Latif Jameel. Tasked to create a competition site where users can create and submit AI images for a chance to win prizes.",
-    skills: [
-      { name: "React", icon: "react" },
-      { name: "Vite", icon: "vite" },
-      { name: "TypeScript", icon: "typescript" },
-      { name: "Tailwind", icon: "tailwindcss" },
-      { name: "Next.js", icon: "nextjs" },
-      { name: "AWS", icon: "amazonwebservices" },
-    ],
-    image: "/assets/projects/aljf_ai.png",
-  },
-  {
-    title: "Shahbandr AI - Website",
-    description:
-      "Responsible for creating and maintaining the Shahbandr AI website and admin dashboard. Shahbandr AI is a platform that allows users to generate AI content for their stores.",
-    skills: [
-      { name: "React", icon: "react" },
-      { name: "TypeScript", icon: "typescript" },
-      { name: "MUI", icon: "mui", iconify: "simple-icons:mui" },
-      { name: "AWS", icon: "amazonwebservices" },
-    ],
-    image: "/assets/projects/shahbandr_ai.png",
-    link: "https://ai.shahbandr.com/",
-  },
-  {
     title: "Boncafé - Backend API",
     description:
-      "Responsible for creating the backend API for Boncafé's mobile application. Was also tasked to integrate the API with the mobile application.",
+      "Created the backend API for Boncafé’s maintenance tracking app as part of a university industry project, supporting real business requirements provided by the company. Also contributed Kotlin features to integrate the mobile app with the backend.",
+
+    info: [
+      {
+        title: "Backend Development",
+        description:
+          "Designed and implemented REST API endpoints for handling maintenance requests and scheduling.",
+      },
+      {
+        description:
+          "Created PostgreSQL schemas and queries to manage users, jobs, and status tracking.",
+      },
+      {
+        title: "Mobile Collaboration",
+        description:
+          "Collaborated with a teammate developing the Android app and contributed Kotlin features to integrate with the API.",
+      },
+      {
+        title: "Deployment",
+        description:
+          "Deployed the API to Heroku for demonstration and testing during the project showcase.",
+      },
+      {
+        title: "Technologies Used",
+        description: "Node.js, Express, PostgreSQL, Heroku, Kotlin",
+      },
+    ],
+
     skills: [
       { name: "Node.js", icon: "nodejs" },
       { name: "Express", icon: "express", iconify: "simple-icons:express" },
@@ -113,9 +342,10 @@ const projects = [
       { name: "Heroku", icon: "heroku" },
       { name: "Kotlin", icon: "kotlin" },
     ],
-    image: "/assets/projects/boncafe.PNG",
+    image: "/assets/projects/boncafe_certificate.png",
+    logo: "/assets/logos/boncafe_logo.png",
   },
-] as Project[];
+] as ProjectItemType[];
 ---
 
 <!-- Initially hidden -->
@@ -127,38 +357,6 @@ const projects = [
   </h2>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    {
-      projects.map(({ title, description, skills, image, link }) => (
-        <a
-          href={link}
-          target={link ? "_blank" : "_self"}
-          rel="noopener noreferrer"
-          class="flex flex-col gap-4 mb-4">
-          <img
-            src={image}
-            alt={title}
-            class="object-contain w-full h-40 rounded-lg"
-          />
-
-          <div class="flex flex-col gap-2">
-            <h3 class="text-lg font-semibold">{title}</h3>
-            <p class="text-base">{description}</p>
-
-            <div class="flex flex-wrap gap-2">
-              {skills.map(({ name, icon, iconify }) => (
-                <div class="flex items-center gap-1">
-                  {!iconify ? (
-                    <i class={`devicon-${icon}-plain text-2xl`} />
-                  ) : (
-                    <Icon name={iconify} class="text-2xl" />
-                  )}
-                  <p class="text-sm">{name}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </a>
-      ))
-    }
+    <ProjectsComponent projects={projectsList} client:load />
   </div>
 </div>

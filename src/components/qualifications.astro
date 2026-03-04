@@ -12,22 +12,6 @@ const education = [
 
 const certifications = [
   {
-    name: "Microsoft Certified: Azure Fundamentals",
-    logo: "/assets/icons/azure_fundamentals.svg",
-    issuer: "Microsoft",
-    date: "2023-08-17",
-    expiry: "N/A",
-    link: "https://learn.microsoft.com/api/credentials/share/en-us/DylanRoanDuario-2822/4BF811414FC919A3?sharingId=6C78B0896EB299BB",
-  },
-  {
-    name: "AWS Certified AI Practitioner",
-    logo: "/assets/icons/aws_ai_practitioner.png",
-    issuer: "Amazon Web Services",
-    date: "2025-03-12",
-    expiry: "2028-03-12",
-    link: "e",
-  },
-  {
     name: "AWS Certified Cloud Practitioner",
     logo: "/assets/icons/aws_cloud_practitioner.png",
     issuer: "Amazon Web Services",
@@ -35,36 +19,34 @@ const certifications = [
     expiry: "2028-08-31",
     link: "https://www.credly.com/badges/0ef42a0a-3a2e-4117-b743-f5d25599e077/public_url",
   },
+  {
+    name: "AWS Certified AI Practitioner",
+    logo: "/assets/icons/aws_ai_practitioner.png",
+    issuer: "Amazon Web Services",
+    date: "2025-03-12",
+    expiry: "2028-03-12",
+    link: "https://www.credly.com/badges/ceb79e36-4cfc-45f5-9c8d-79ffa337444a/public_url",
+  },
+  {
+    name: "Microsoft Certified: Azure Fundamentals",
+    logo: "/assets/icons/azure_fundamentals.svg",
+    issuer: "Microsoft",
+    date: "2023-08-17",
+    expiry: "N/A",
+    link: "https://learn.microsoft.com/api/credentials/share/en-us/DylanRoanDuario-2822/4BF811414FC919A3?sharingId=6C78B0896EB299BB",
+  },
 ];
 ---
 
 <!-- Initially hidden -->
 <div
-  class="w-full hidden flex-col rounded-lg outline-2 px-2 gap-2"
+  class="w-full hidden flex-col rounded-lg outline-2 px-2 gap-4"
   id="qualifications">
   <h2 class="md:text-3xl text-2xl font-bold md:text-start text-center">
-    Education & Certifications
+    Certifications
   </h2>
 
-  <div class="flex flex-col gap-8">
-    {
-      education.map(({ name, logo, degree, startDate, endDate, grade }) => (
-        <div class="flex gap-4 md:flex-row flex-col">
-          <img src={logo} alt={name} class="mx-auto object-contain w-20 h-20" />
-
-          <div class="flex-1 flex flex-col md:text-start text-center">
-            <h2 class="text-xl font-semibold">{degree}</h2>
-            <p class="text-base">
-              {name} | {startDate} - {endDate}
-            </p>
-            <p class="text-sm">{grade}</p>
-          </div>
-        </div>
-      ))
-    }
-  </div>
-
-  <div class="flex flex-col gap-8">
+  <div class="flex flex-col gap-4">
     {
       certifications.map(({ name, issuer, date, link, logo, expiry }) => (
         <a
@@ -94,6 +76,28 @@ const certifications = [
             </p>
           </div>
         </a>
+      ))
+    }
+  </div>
+
+  <h2 class="md:text-3xl text-2xl font-bold md:text-start text-center">
+    Education
+  </h2>
+
+  <div class="flex flex-col gap-4">
+    {
+      education.map(({ name, logo, degree, startDate, endDate, grade }) => (
+        <div class="flex gap-4 md:flex-row flex-col">
+          <img src={logo} alt={name} class="mx-auto object-contain w-20 h-20" />
+
+          <div class="flex-1 flex flex-col md:text-start text-center">
+            <h2 class="text-xl font-semibold">{degree}</h2>
+            <p class="text-base">
+              {name} | {startDate} - {endDate}
+            </p>
+            <p class="text-sm">{grade}</p>
+          </div>
+        </div>
       ))
     }
   </div>

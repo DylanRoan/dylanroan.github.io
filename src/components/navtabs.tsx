@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 
 const navItems = [
   {
@@ -11,14 +11,14 @@ const navItems = [
     id: "qualifications",
   },
   {
-    name: "Projects",
+    name: "Portfolio",
     id: "projects",
   },
-  {
-    name: "Skills",
-    id: "skills",
-    className: "hidden",
-  },
+  // {
+  //   name: "Skills",
+  //   id: "skills",
+  //   className: "hidden",
+  // },
 ];
 
 export function NavTabs() {

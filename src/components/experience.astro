@@ -1,11 +1,28 @@
 ---
+import ExperienceItem from "@/components/experience/experience-item.astro";
+
 const experience = [
   {
     title: "Software Engineer",
     sub: "On-Site - Full Time",
+    company: "Araby AI",
+    location: "Abu Dhabi, United Arab Emirates",
+    description: [
+      "Responsible for creating, maintaining, and updating software solutions for clients and internal projects. Worked on various projects including Araby AI, AvatarLabs, etc. Using various technologies that match the project requirements and client needs.",
+    ],
+    logo: "/assets/logos/araby_ai_logo.png",
+    link: "https://www.linkedin.com/company/araby-ai",
+    startDate: "2024-09-17",
+    endDate: "N/A",
+    ongoing: true,
+  },
+  {
+    title: "Software Engineer",
+    sub: "On-Site - Full Time",
     company: "MVP Application & Game Design L.L.C.",
+    location: "Abu Dhabi, United Arab Emirates",
     description:
-      "Responsible for creating software solutions for clients and internal projects. Worked on various projects including Araby AI, AvatarLabs, etc. Using various technologies that match the project requirements and client needs.",
+      "Responsible for creating software solutions for clients and internal projects. Worked on various projects including AWQAF, Done, etc. Using various technologies that match the project requirements and client needs.",
     logo: "/assets/logos/mvp_apps_logo.jpg",
     link: "https://www.linkedin.com/company/mvp-apps",
     startDate: "2024-09-17",
@@ -14,11 +31,12 @@ const experience = [
   },
   {
     title: "Full Stack Developer",
-    sub: "Project",
-    company: "Angels on High Montessori TCDC",
+    sub: "Freelance Project",
+    company: "Learning Center",
+    location: "Abu Dhabi, United Arab Emirates",
     description:
       "Responsible for creating a website for the learning center, including a blog, student portal, and management tools. Also created teacher and parent portals for managing students and classes. Using Next.js, PostgreSQL, Drizzle, Backblaze, and Heroku.",
-    logo: "/assets/logos/angels_on_high_logo.jpg",
+    logo: "",
     link: "",
     startDate: "2025-01-01",
     endDate: "2025-05-01",
@@ -26,11 +44,12 @@ const experience = [
   },
   {
     title: "Full Stack Developer",
-    sub: "On-Site - Part Time",
+    sub: "On-Site - Internship",
     company: "Famous Cakes",
+    location: "Abu Dhabi, United Arab Emirates",
     description:
       "Responsible for creating and maintaining the shop's website and internal tools for managing orders and products. Created a solution using Next.js, PostgreSQL, and Heroku. Integrated with the Stripe API for payments.",
-    logo: "/assets/logos/famous_cakes_logo.jpg",
+    logo: "/assets/logos/famous_cakes_logo.png",
     link: "",
     startDate: "2024-04-01",
     endDate: "2024-10-01",
@@ -40,9 +59,10 @@ const experience = [
     title: "Back-end Developer",
     sub: "University Project",
     company: "Boncafé Middle East LLC",
+    location: "Dubai, United Arab Emirates",
     description:
       "Responsible for creating a back-end system for a mobile application for their service and maintenance department. The system is used to manage and track service requests and maintenance schedules. Created a REST API using Node.js, Express, PostgreSQL, and Heroku.",
-    logo: "https://www.boncafeme.ae/cdn/shop/files/LOGO_3.png",
+    logo: "/assets/logos/boncafe_logo.png",
     link: "https://www.boncafeme.ae/",
     startDate: "2023-02-15",
     endDate: "2023-06-01",
@@ -98,66 +118,13 @@ const nonProfessionalExperience = [
 
   <div class="flex flex-col mt-4">
     {
-      experience.map(
-        (
-          {
-            title,
-            sub,
-            company,
-            description,
-            logo,
-            link,
-            startDate,
-            endDate,
-            ongoing,
-          },
-          index
-        ) => (
-          <div class="flex gap-4 items-stretch">
-            <div class="relative h-full md:block hidden">
-              <div class="w-2 h-2 bg-slate-300 rounded-full absolute top-2 left-1/2 -translate-x-1/2" />
-              <div
-                class:list={[
-                  "w-[2px] bg-slate-300 h-full",
-                  index === 0 && "mt-2",
-                  index === experience.length - 1 && "mb-10",
-                ]}
-              />
-            </div>
-
-            <div class="flex flex-col gap-2 mb-4">
-              <div class="flex gap-2 md:flex-row flex-col">
-                {/* <img src={logo} alt={company} class="w-12 h-12 object-cover" /> */}
-                <div class="flex flex-col">
-                  <h4 class="text-lg font-semibold flex md:flex-row flex-col md:gap-1 flex-wrap">
-                    <span>{title}</span>
-                    <span class="md:block hidden">@</span>
-                    <span>{company}</span>
-                  </h4>
-                  <p class="text-sm text-slate-500 flex gap-1 flex-wrap">
-                    <span>{sub}</span>
-                    <span>{" | "}</span>
-                    <span>
-                      {new Date(startDate).toLocaleDateString("en-US", {
-                        month: "short",
-                        year: "numeric",
-                      })}
-                      {" - "}
-                      {ongoing
-                        ? "Present"
-                        : new Date(endDate).toLocaleDateString("en-US", {
-                            month: "short",
-                            year: "numeric",
-                          })}
-                    </span>
-                  </p>
-                </div>
-              </div>
-              <p class="text-base">{description}</p>
-            </div>
-          </div>
-        )
-      )
+      experience.map((ex, index) => (
+        <ExperienceItem
+          experience={ex}
+          isStart={index === 0}
+          isEnd={index === experience.length - 1}
+        />
+      ))
     }
   </div>
 
